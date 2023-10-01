@@ -1,0 +1,12 @@
+@function toRem($value, $base: 16) {
+    $value: $value * 1px;
+    $base: $base * 1px;
+    @return calc($value / $base * 1rem);
+}
+
+@function toEm($value, $base: 16) {
+    $value: $value * 1px;
+    $base: $base * 1px;
+    @return calc($value / $base * 1em);
+}
+

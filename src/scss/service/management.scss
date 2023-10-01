@@ -1,0 +1,78 @@
+@use "sass:math";
+
+// add function ===============================================================================================================
+@use "./function" as *;
+
+// add mixins ================================================================================================================
+@use "./mixins" as *;
+
+// Fonts =====================================================================================================================
+
+// Connecting fonts
+
+@include font("Montserrat", Montserrat-Medium, 500, normal);
+@include font("Montserrat", Montserrat-SemiBold, 600, normal);
+@include font("Montserrat", Montserrat-Bold, 700, normal);
+@include font("icons", icons, 400, normal);
+
+// Variables font
+$baseSizeFont: 18;
+$fontSize: toRem(18);
+$fontFamily: "Montserrat";
+
+
+// Settings ===============================================================================================================
+// Colors
+$mainColor:#000;
+$mainDarkColor: #141414;
+
+// Минимальная ширина страницы
+$minWidth: 320;
+
+// Ширина полотна
+$maxWidth: 1920;
+
+// Ширина ограничивающего контейнера (0 = нет ограничений)
+$minWidthContainer: 1590;
+
+// Отступ безопасности
+$containerPadding: 30;
+
+// Type adaptive
+// 1 - отзывчивость
+// 2 - есть брейк-поинты
+$responsiveType: 1;
+
+// media
+
+$px: toEm($maxWidth); // Пк, ноутбук
+$tablet: toEm(991.98);
+$mobile: toEm(767.98);
+$mobileSmall: toEm(479.98);
+
+/* Сниппет */
+
+@if ($responsiveType==1) {
+    [class*="__container"] {
+        @if ($minWidthContainer > 0) {
+            max-width: toRem($minWidthContainer, $baseSizeFont);
+            box-sizing: content-box;
+            margin: 0 auto;
+        }
+        @if ($containerPadding>0) {
+            padding: 0 toRem(math.div($containerPadding, 2), $baseSizeFont);
+        }
+    }
+} @else {
+    [class*="__container"] {
+        margin: 0 auto;
+        @if ($minWidthContainer>0) {
+            max-width: toRem($minWidthContainer, $baseSizeFont);
+            box-sizing: content-box;
+        } @else {
+            @if ($containerPadding>0) {
+                padding: 0 toRem(math.div($containerPadding, 2), $baseSizeFont)
+            }
+        }
+    }
+}

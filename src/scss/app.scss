@@ -1,0 +1,14 @@
+// import modules------------------------------------------------------------------------------------------------------------
+
+
+// file reset, pattern
+@use "./core/all" as core;
+
+// file mixins, function, variables
+@use "./service/all" as service;
+
+// file sections and block
+@use "./sectionsOrBlocks/all" as blocks;
+
+// layout
+@use "./layout/all";
